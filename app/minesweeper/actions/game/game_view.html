@@ -1,0 +1,58 @@
+<h1>Game <%- game.id %></h1>
+
+<table border=1 width="400">
+    <tr>
+        <th>&nbsp;</th>
+        <% for (var c = 0; c < 8; ++c){ %>
+        <th><%- c + 1 %></th>
+        <% } %>
+    </tr>
+    <% for (var r = 0; r < 8; ++r) { %>
+
+    <tr>
+        <th><%- r + 1 %></th>
+        <% for (var c = 0; c < 8; ++c){ %>
+        <td  onclick="mine_try(this, <%- game.mines[r][c]%>, <%- game.count[r][c] %>)">
+            ?</td>
+        <% } %>
+    </tr>
+
+
+    <% } %>
+</table>
+<script language="javascript">
+    function  mine_try  (th, hit, count) {
+        if (hit) {
+            th.innerHTML = ('YOU BLOW UP');
+        } else {
+            th.innerHTML = count;
+        }
+    }
+
+</script>
+<a href="javascript: $('#cheat').toggle()">Cheat</a>
+<div id="cheat" style="display: none">
+        <h2>Cheat Sheet</h2>
+
+<table border=1 width="400">
+    <tr>
+        <th>&nbsp;</th>
+        <% for (var c = 0; c < 8; ++c){ %>
+        <th><%- c + 1 %></th>
+        <% } %>
+    </tr>
+    <% for (var r = 0; r < 8; ++r) { %>
+
+    <tr>
+        <th><%- r + 1 %></th>
+        <% for (var c = 0; c < 8; ++c){ %>
+        <td><span style="color: red"><%- game.mines[r][c] ? game.mines[r][c] : '&nbsp;' %></span>
+            <%- game.count[r][c] ?'{' + game.count[r][c] + '}' : '&nbsp;' %>
+       </td>
+        <% } %>
+    </tr>
+
+
+    <% } %>
+</table>
+</div>
