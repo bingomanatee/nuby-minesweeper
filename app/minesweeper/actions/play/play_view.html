@@ -1,0 +1,12 @@
+<h1>Welcome to Minesweeper</h1>
+        
+<h2>Games</h2>
+        
+<ul>
+    <% games.forEach(function(game){ %>
+    <li><a href="/minesweeper/game/<%- game.id %>"># <%- game.id %>: Play </a></li>
+    
+    <% }) %>
+</ul>
+<hr />
+<a href="/minesweeper/new">New Game</a>
